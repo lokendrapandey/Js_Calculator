@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>clculator</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+        body{
+            min-height: 100vh;
+            background:#141419;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .calculator{
+            width: 300px;
+            height: 500px;
+            box-shadow: 4px 4px 30px rgb(154, 147, 147);
+            border-radius: 12px;
+            background: rgb(92, 97, 97);
+            /* overflow: hidden; */
+        }
+        form input{
+                width: 100%;
+                height: 150px;
+                border: none;
+                border-radius: 12px;
+                font-size: 2rem;
+                padding: 1rem;
+                color: white;
+                background-color: black;
+                text-align: right;
+                /* pointer-events: none; */
+
+        }
+        button{
+                flex: 0 0 22%;
+                margin: 5px 0;
+                border: 1px solid #000;
+
+
+            width: 60px;
+            height: 53px;
+            font-size: 22px;
+            font-weight: 600;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .buttons{
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                padding: 22px;
+                
+        }
+        .btn-yellow{
+            background-color: rgb(204, 171, 25);
+            color: rgb(15, 249, 249);
+
+        }
+        .btn-grey{
+            background-color: rgb(205, 237, 242);
+            /* color: rgb(12, 12, 13); */
+        }
+        .btn-equal{
+            background-color: rgb(34, 22, 26);
+            color: rgb(5, 164, 175);
+        }
+        .btn-clear{
+            background-color: rgb(237, 7, 7);
+            
+        }
+
+    </style>
+</head>
+<body>
+    
+    <section class="calculator">
+        <form>
+        <input  type="text" class="screen">
+
+        </form>
+        <div class="buttons">
+            <button type="button" class="btn btn-yellow" data-num="*" >*</button>
+            <button type="button" class="btn btn-yellow" data-num="/" >/</button>
+            <button type="button" class="btn btn-yellow" data-num="-" >-</button>
+            <button type="button" class="btn btn-yellow" data-num="+" >+</button>
+
+            <button type="button" class="btn btn-grey" data-num="9" >9</button>
+            <button type="button" class="btn btn-grey" data-num="8" >8</button>
+            <button type="button" class="btn btn-grey" data-num="7" >7</button>
+            <button type="button" class="btn btn-grey" data-num="6" >6</button>
+            <button type="button" class="btn btn-grey" data-num="5" >5</button>
+            <button type="button" class="btn btn-grey" data-num="4" >4</button>
+            <button type="button" class="btn btn-grey" data-num="3" >3</button>
+            <button type="button" class="btn btn-grey" data-num="2" >2</button>
+            <button type="button" class="btn btn-grey" data-num="1" >1</button>
+            <button type="button" class="btn btn-grey" data-num="0" >0</button>
+            <button type="button" class="btn btn-grey" data-num="." >.</button>
+
+
+            <button type="button" class="btn btn-equal">=</button>
+            <button type="button" class="btn btn-clear">C</button>
+        </div>
+    </section>
+        <script>
+            (function(){
+                let screen =document.querySelector('.screen');
+                let buttons =document.querySelectorAll('.btn');
+                let clear =document.querySelector('.btn-clear');
+                let equal =document.querySelector('.btn-equal');
+
+            buttons.forEach(function(button){
+
+                button.addEventlistener("click",function(any){
+                    let value = any.target.dataset.num;
+                    screen.value += value;
+                })
+            });
+                equal.addEventListener("click",function(any)
+                {
+                    if(screen.value === ''){
+                        screen.value = "";
+                    } else{
+                        let answer = eval(screen,value);
+                        screen.value = answer;
+
+                    }
+                })
+                    clear.addEventListener('click',function(any){
+                        screen.value = "";
+                    })
+
+            })();
+        </script>
+</body>
+</html>
